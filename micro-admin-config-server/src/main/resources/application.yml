@@ -21,10 +21,10 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Csvm2021/AA4_DSBS.git
-          searchPath: micro-gestion-config-data
-          username: ${USER_NAME}
-          password: ${USER_PASSWORD}
+          uri: https://github.com/Csvm2021/dsbsV.git
+          searchPaths: ms-gestion-config-data/ms-gestion-config-data/
+#          username: ${USER_NAME}
+#          password: ${USER_PASSWORD}
           default-label: main
           cloneOnStart: true
           ignore-local-ssh-settings: true    

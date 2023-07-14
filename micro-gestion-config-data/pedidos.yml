@@ -1,7 +1,7 @@
 server:
   port: 8086
   servlet:
-    context-path: /ecomercetecWebr
+    context-path: /ecomercetecWeb
     
   error:
     include-details: always
@@ -37,5 +37,6 @@ spring:
 eureka:
    client:
       fetch-registry: true
+      register-whith-eureka: true
       serviceUrl:
          defaultZone: http://localhost:8889/eureka

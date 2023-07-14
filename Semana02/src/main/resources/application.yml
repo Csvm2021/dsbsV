@@ -1,32 +1,12 @@
 server:
-  port: 8085
-#  servlet:
-#    context-path: /ecomercetecWeb
-#  
-#  error:
-#    include-details: always
-#
-##PostGrestSql
-#spring:
-#  datasource:
-#    url: jdbc:postgresql://localhost:5432/postgres
-#    username: postgres
-#    password: root
-##Jpa
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        format-sql: true
-#        dialect: org.hibernate.dialect.PostgreSQL81Dialect
-#  mvc:
-#    view:
-#      prefix: resources/templates
-#      suffix: html
-#  main:
-#    allow-circular-references: true
+  servlet:
+    context-path: /ecomercetecWeb
+  
+  error:
+    include-details: always
+
+#PostGrestSql
+
 # 
 ##Registry Client
 #eureka:
@@ -47,6 +27,28 @@ spring:
          max-attempts: 20
          max-interval: 15000
          initial-interval: 10000 
+         
+         
+#spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: root
+#Jpa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+  mvc:
+    view:
+      prefix: resources/templates
+      suffix: html
+  main:
+    allow-circular-references: true
 
  
  
@@ -70,23 +72,23 @@ spring:
  
  
       
-#condiguraciones DataSource
-######spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
-######spring.datasource.username=postgres
-######spring.datasource.password=root
+##condiguraciones DataSource
+#spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+#spring.datasource.username=postgres
+#spring.datasource.password=root
 #spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-#Configuraciones JPA
-######spring.jpa.hibernate.ddl-auto=update
-######spring.jpa.show-sql=true
-######spring.jpa.properties.hibernate.format_sql=true
-######spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL81Dialect
-#Configuraciones MVC
-#####server.port=8085
-#####spring.mvc.view.prefix=resources/templates
-#####spring.mvc.view.suffix=html
-#####server.servlet.context-path=/ecomercetecWeb
-
-#####spring.main.allow-circular-references=true
+##Configuraciones JPA
+#spring.jpa.hibernate.ddl-auto=update
+#spring.jpa.show-sql=true
+#spring.jpa.properties.hibernate.format_sql=true
+#spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQL81Dialect
+##Configuraciones MVC
+#server.port=8085
+#spring.mvc.view.prefix=resources/templates
+#spring.mvc.view.suffix=html
+#server.servlet.context-path=/ecomercetecWeb
+#
+#spring.main.allow-circular-references=true
 
 
 #http://localhost:8085/carteleraWeb/peliculas/listarTodo
