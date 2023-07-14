@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<title>Listar Pedidos</title>
+<head th:replace="plantillas/base :: head">
+</head>
+<body>
+<nav th:replace="plantillas/base :: nav"></nav>
+	<div class ="contact-form" align="center">
+            <form>
+                <h3>LISTA DE PEDIDOS</h3>
+		<div class = "row">
+			<div class = "form-group">
+				<a  class="btn btn-success" th:href="@{/pedidos/nuevo}" role="button" ><i class="bi-plus-circle"></i> Crear Nuevo Pedido</a>
+			</div>
+		</div>
+	<table class = "table table-striped table-bordered">
+			<thead class = "form-group table-dark" align="center" >
+				<tr>
+					<th>ID Pedidos</th>
+					<th>Fecha</th>
+					<th>Total</th>
+					<th>Clientes</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<tr th:each="pedido : ${listaPedidos}">
+					<td th:text="${pedido.idpedido}">Id</td>
+					<td th:text="${pedido.fecha}">Fecha</td>
+					<td th:text="${pedido.total}">Total</td>
+					<td th:text="${pedido.clientesid}">Total</td>
+					<td>
+						<a class="bi-brush-fill btn btn-warning" th:href="@{/pedidos/actualizar/{id}(id=${pedido.idpedido})}" role="button"></a>
+						 &nbsp;&nbsp;&nbsp; 
+						<a class="bi-trash-fill btn btn-danger" th:href="@{/pedidos/eliminar/{id}(id=${pedido.idpedido})}" role="button"></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

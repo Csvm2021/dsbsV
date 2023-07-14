@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<title>Listar Productos</title>
+<head th:replace="plantillas/base :: head">
+<body>
+	<nav th:replace="plantillas/base :: nav"></nav>
+	<div class ="contact-form" align="center">
+            <form>
+                <h3>LISTA DE PRODUCTOS</h3>
+		<div class = "row">
+			<div class = "form-group">
+				<a  class="btn btn-success" th:href="@{/productos/nuevo}" role="button" ><i class="bi-plus-circle"></i> Crear Nuevo Producto</a>
+			</div>
+		</div>
+	<table class = "table table-striped table-bordered">
+			<thead class = "form-group table-dark" align="center" >
+				<tr>
+					<th>Id</th>
+						<th>Nombre</th>
+						<th>Proveedor</th>
+						<th>Precio</th>
+						<th>Stock</th>
+						<th>Descripcion</th>
+						<th>CategoriaId</th>
+						<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<tr th:each="productos : ${listaProductos}">
+					<td th:text="${productos.idproducto}">Id</td>
+					<td th:text="${productos.nombre}">Nombre</td>
+					<td th:text="${productos.proveedor}">Proveedor</td>
+					<td th:text="${productos.precio}">Precio</td>
+					<td th:text="${productos.stock}">Stock</td>
+					<td th:text="${productos.descripcion}">Descripcion</td>
+					<td th:text="${productos.categoriasid}">Descripcion</td>
+					<td>
+						<a class="bi-brush-fill btn btn-warning" th:href="@{/productos/actualizar/{id}(id=${productos.idproducto})}" role="button"></a>
+						<a class="bi-trash-fill btn btn-danger" th:href="@{/productos/eliminar/{id}(id=${productos.idproducto})}" role="button"></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

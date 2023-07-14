@@ -1,0 +1,32 @@
+package certus.edu.pe.controladores.configuracion;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+@Configuration
+public class MvcConfig implements WebMvcConfigurer {
+	
+	@Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**") // Configura los patrones de URL que permitirán CORS (en este caso, todas las URLs)
+            .allowedOrigins("http://localhost:4200") // Especifica los orígenes permitidos
+            .allowedMethods("GET", "POST", "PUT", "DELETE") // Especifica los métodos HTTP permitidos
+            .allowedHeaders("*") // Especifica los encabezados permitidos
+            .allowCredentials(true) // Permite enviar credenciales (cookies, encabezados de autenticación) en solicitudes CORS
+            .maxAge(3600); // Configura el tiempo de almacenamiento en caché de las opciones pre-vuelo (en segundos)
+    }
+	
+	public void addViewControllers(ViewControllerRegistry registry) {
+		
+		registry.addViewController("/").setViewName("principal");
+		registry.addViewController("/principal").setViewName("principal");
+		registry.addViewController("/home").setViewName("principal");
+		registry.addViewController("/inicio").setViewName("principal");
+		registry.addViewController("/logeo").setViewName("index");
+		registry.addViewController("/login").setViewName("index");
+		registry.addViewController("/bienvenida").setViewName("bienvenida");
+		registry.addViewController("/error").setViewName("error");
+	}	
+}

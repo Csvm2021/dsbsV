@@ -1,0 +1,93 @@
+package certus.edu.pe.controladores.configuracion;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+
+		http
+			.cors()
+				.and()
+					.authorizeRequests()
+					.antMatchers("/css/**", "/imagenes/**", "/js/**", "/", "/principal", "/home", "/inicio", "/bienvenida", "/logeo", "/login","/rest/**")
+					.permitAll()
+					.antMatchers("/productos/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
+					.antMatchers("/productos/nuevo").hasAnyRole("ADMIN","CREADOR")
+					.antMatchers("/productos/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+					.antMatchers("/productos/actualizar/**").hasAnyRole("ADMIN","EDITOR")
+					.antMatchers("/productos/eliminar/**").hasAnyRole("ADMIN","DEPURADOR")
+					.antMatchers("/pedidos/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
+					.antMatchers("/pedidos/nuevo").hasAnyRole("ADMIN","CREADOR")
+					.antMatchers("/pedidos/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+					.antMatchers("/pedidos/actualizar/**").hasAnyRole("ADMIN","EDITOR")
+					.antMatchers("/pedidos/eliminar/**").hasAnyRole("ADMIN","DEPURADOR")
+					.antMatchers("/clientes/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
+					.antMatchers("/clientes/nuevo").hasAnyRole("ADMIN","CREADOR")
+					.antMatchers("/clientes/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+					.antMatchers("/clientes/actualizar/**").hasAnyRole("ADMIN","EDITOR")
+					.antMatchers("/clientes/eliminar/**").hasAnyRole("ADMIN","DEPURADOR")
+					.antMatchers("/categorias/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
+					.antMatchers("/categorias/nuevo").hasAnyRole("ADMIN","CREADOR")
+					.antMatchers("/categorias/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+					.antMatchers("/categorias/actualizar/**").hasAnyRole("ADMIN","EDITOR")
+					.antMatchers("/categorias/eliminar/**").hasAnyRole("ADMIN","DEPURADOR")
+					.antMatchers("/carrito/listarTodo").hasAnyRole("ADMIN","LECTOR","CREADOR","EDITOR","DEPURADOR")
+					.antMatchers("/carrito/nuevo").hasAnyRole("ADMIN","CREADOR")
+					.antMatchers("/carrito/guardar").hasAnyRole("ADMIN","CREADOR","EDITOR")
+					.antMatchers("/carrito/actualizar/**").hasAnyRole("ADMIN","EDITOR")
+					.antMatchers("/carrito/eliminar/**").hasAnyRole("ADMIN","DEPURADOR")
+					
+				
+					.anyRequest().authenticated()
+					.and().formLogin().loginPage("/login").defaultSuccessUrl("/bienvenida", true).permitAll()
+					.and().logout()
+					.permitAll();
+			
+				}
+
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		auth.inMemoryAuthentication().withUser("admin").password(encoder.encode("admin")).roles("ADMIN").and()
+		.withUser("jose").password(encoder.encode("jose")).roles("LECTOR").and()
+		.withUser("cesar").password(encoder.encode("cesar")).roles("CREADOR", "LECTOR").and()
+		.withUser("anderson").password(encoder.encode("anderson")).roles("ADMIN").and()
+		.withUser("edwin").password(encoder.encode("edwin")).roles("LECTOR","DEPURADOR").and()
+		.withUser("anthony").password(encoder.encode("anthony")).roles("EDITOR","LECTOR").and();
+
+	}
+	
+	@Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        configuration.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
+
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+
+}

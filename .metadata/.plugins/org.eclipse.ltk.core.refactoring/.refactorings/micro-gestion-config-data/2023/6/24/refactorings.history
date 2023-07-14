@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;micro-gestion-config-data/categorias&apos; to &apos;categorias.yml&apos;" description="Rename resource &apos;categorias&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="categorias" name="categorias.yml" stamp="1686964118424" updateReferences="true"/>
+</session>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="CommitDialog.authorValues">
+		<item value="Cesvar &lt;73200409@certus.edu.pe&gt;"/>
+	</list>
+	<list key="CommitDialog.committerValues">
+		<item value="Cesvar &lt;73200409@certus.edu.pe&gt;"/>
+	</list>
+	<list key="EGit.KnownHosts">
+		<item value="git.eclipse.org"/>
+		<item value="github.com"/>
+		<item value="bitbucket.org"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://github.com/Csvm2021/dsbsV.git"/>
+	</list>
+	<section name="org.eclipse.egit.ui.internal.staging.StagingView">
+		<item key="MAIN_SASH_FORM_ORIENTATION_VERTICAL" value="false"/>
+		<item key="HORIZONTAL_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="STAGING_SASH_FORM_WEIGHT" value="500,500"/>
+		<item key="sortItemState" value="false"/>
+	</section>
+	<section name="GitCommitMessageComponent">
+		<list key="C:\Users\hp\OneDrive\Escritorio\profesor dbs\DSBS-Abril-2023-Noche-main\ms-gestion-config-data\.git">
+			<item value="false"/>
+			<item value="Cesvar &lt;73200409@certus.edu.pe&gt;"/>
+			<item value="commit 1"/>
+			<item value="Cesvar &lt;73200409@certus.edu.pe&gt;"/>
+			<item value="f35feaca67313b7f6174ed37e2df2f2db61903a8"/>
+			<item value="0"/>
+			<item value="false"/>
+			<item value=""/>
+		</list>
+	</section>
+	<section name="GitCommitSearchPage">
+		<item key="HISTORY_SIZE" value="0"/>
+	</section>
+</section>

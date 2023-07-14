@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="../../js/jquery-3.4.1.min.js" type="text/javascript"></script>
+<link href="../../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../css/miLogin.css" rel="stylesheet" type="text/css" />
+<link href="../../css/miLayout.css" rel="stylesheet" type="text/css" />
+<link href="../../css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<script src="../../js/bootstrap.min.js" type="text/javascript"></script>
+<title>Crear un nuevo cliente</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark flex-row">
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link text-white" id="nav-link-custom"
+					th:href="@{/bienvenida}">CERTUS</a></li>
+				<li class="nav-item"><a class="nav-link text-white" 
+				    th:href="@{/clientes/listarTodo}">Regresar a Clientes</a></li>
+			</ul>
+		</div>
+	</nav>
+	<section id="seccion1">
+			<p>Datos de Nuevos Clientes</p>
+			<form th:action="@{/clientes/guardar}"
+				th:object="${clientes}" method="post">
+
+				<div class="form-group row">
+					<label for="id" class="col-sm-2 col-form-label">ID Clientes:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="id"
+							 th:field="*{idcliente}" readonly="readonly" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="fecha" class="col-sm-2 col-form-label">Nombre:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="nombre"
+							placeholder="Ingrese su Nombre" th:field="*{nombre}" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="total" class="col-sm-2 col-form-label">Apellido:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="apellido"
+							placeholder="Ingrese su apellido" th:field="*{apellido}" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="total" class="col-sm-2 col-form-label">Dirección:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="direccion"
+							placeholder="Ingrese su direccion" th:field="*{direccion}" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="total" class="col-sm-2 col-form-label">Teléfono:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="telefono"
+							placeholder="Ingrese su teléfono" th:field="*{telefono}" />
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="total" class="col-sm-2 col-form-label">Método Pago:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="metodopago"
+							placeholder="Ingrese su Metodo de Pago" th:field="*{metodopago}" />
+					</div>
+				</div>
+				<div align="center">
+					<button type="submit" class="btn btn-primary">Guardar</button>
+				</div>
+		</form>
+	</section>
+</html>

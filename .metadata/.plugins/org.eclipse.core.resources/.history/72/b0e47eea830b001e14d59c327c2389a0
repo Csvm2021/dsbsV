@@ -1,0 +1,60 @@
+package certus.edu.pe.controladores.web;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+import certus.edu.pe.modelo.Carrito;
+import certus.edu.pe.servicios.CarritoServicio;
+
+@Controller
+@RequestMapping("/Carrito")
+public class Carritowebcontroller {
+	
+	@Autowired
+	private CarritoServicio servicio;
+	
+	@RequestMapping("/listarTodo")
+	public String listarCarrito (Model model) {
+		List <Carrito> listarCarrito = servicio.buscarTodo();
+		System.out.println("LISTA DE Carrito : " + listarCarrito);
+		model.addAttribute("listaCarrito", listarCarrito);
+		return "/moduloCarrito/listarTodo";
+	}
+	
+	@RequestMapping("/nuevo")
+	public String nuevoCarrito(Model model) {
+		Carrito carrito = new Carrito ();
+		model.addAttribute("carrito",carrito);
+		return "/moduloCarrito/nuevoCarrito";	
+	}
+	
+	@RequestMapping(value ="/guardar", method= RequestMethod.POST)
+	public String crearCarrito(@ModelAttribute("carrito") Carrito carrito) {
+		    servicio.crear(carrito);
+		    return "redirect:/carrito/listarTodo";
+		
+	}
+	
+	 @RequestMapping(value ="/actualizar/{id}")
+	public ModelAndView editarCarrito(@PathVariable(name="id") int id) {
+		ModelAndView mav = new ModelAndView("/moduloCarrito/editarCarrito");
+		Carrito carrito = servicio.buscarPorId(id);
+		mav.addObject("carrito",carrito);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/eliminar/{id}")
+	public String elimnarCarrito(@PathVariable(name="id") int id) {
+		servicio.eliminarCarrito(id);
+		return "redirect:/carrito/listarTodo";
+	}
+
+}
+

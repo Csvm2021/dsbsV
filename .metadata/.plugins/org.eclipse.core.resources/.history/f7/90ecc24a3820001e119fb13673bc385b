@@ -1,0 +1,30 @@
+server:
+  port: 8888
+
+
+spring:
+  application:
+    name: micro-admin-config-server
+    
+#Configuracion local
+  profiles:
+      active: native
+      
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: file:///C:/DBScertusCicloV/Ecommerce/ms-gestion-config-data/ms-gestion-config-data
+          
+#Configuracion Cloud (git)
+#  cloud:
+#    config:
+ #     server:
+ #       git:
+ #         uri: https://github.com/Insituto-Certus/DSBS-Abril-2023-Noche.git 
+ #         searchPaths: micro-gestion-config-data
+ #         username: ${USER_NAME}
+  #        password: ${USER_PASSWORD}
+  #        default-label: main
+  #        cloneOnStart: true
+  #        ignore-local-ssh-settings: true   

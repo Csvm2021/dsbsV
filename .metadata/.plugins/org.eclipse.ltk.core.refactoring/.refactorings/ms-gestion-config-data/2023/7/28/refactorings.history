@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 5 elements from project &apos;ms-gestion-config-data&apos;&#x0D;&#x0A;- Original project: &apos;ms-gestion-config-data&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     cine.yml&#x0D;&#x0A;     micro-admin-registry-server.yml&#x0D;&#x0A;     micro-employee.yml&#x0D;&#x0A;     ms-admin-api-gateway.yml&#x0D;&#x0A;     ms-admin-registry-server.yml" description="Delete elements" element1="ms-gestion-config-data/micro-admin-registry-server.yml" element2="ms-gestion-config-data/ms-admin-api-gateway.yml" element3="ms-gestion-config-data/ms-admin-registry-server.yml" element4="ms-gestion-config-data/micro-employee.yml" element5="ms-gestion-config-data/cine.yml" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="5" stamp="1689106855587" subPackages="false" version="1.0"/>
+</session>

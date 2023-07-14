@@ -1,0 +1,58 @@
+<head>
+<meta charset="ISO-8859-1">
+<title> Nuevo Cliente </title>
+<head th:replace="plantillas/base :: head">
+<script src="../js/mensajesvalidacion.js" type="text/javascript"></script>
+<title>Crear Nuevo Cliente</title>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark flex-row">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li><a class="nav-link text-white" id="nav-brand-custom" th:href="@{/bienvenida}" style="font-size: 30px">CERTUS</a></li>
+				<li><a class="nav-link text-white" id="nav-brand-custom" th:href="@{/clientes/listarTodo}" style="font-size: 30px">Regresar a Clientes</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Nuevo Cliente </h1>
+				<div class = "card-body">
+					<form th:action="@{/clientes/guardar}" th:object="${clientes}" method="post" id="form">
+						
+						<div class="form-group row">
+							<label>Nombre:</label>
+							<input type="text" class="form-control" id="nombre" th:field="*{nombre}"  pattern="[a-z A-Z]+" required=""/>
+						</div>
+						<div class="form-group row">
+							<label>Apellido:</label>
+							<input type="text" class="form-control" id="apellido" th:field="*{apellido}" pattern="[a-z A-Z]+" required=""/>
+						</div>
+						<div class="form-group row">
+							<label>Direccion:</label>
+							<input type="text" class="form-control" id="direccion" th:field="*{direccion}" required=""/>
+						</div>
+						<div class="form-group row">
+							<label>Telefono:</label>
+							<input type="text" class="form-control" id="telefono" th:field="*{telefono}" pattern="[0-9]+" required=""/>
+						</div>
+						<div class="form-group row">
+							<label>Metodo de Pago:</label>&nbsp;&nbsp;&nbsp;
+							<select th:field="*{metodopago}" required="">
+							<option disabled>Selecciona una Opcion</option>
+						    <option th:value="'Tarjeta de Credito'" th:text="Tarjeta_de_Credito"></option>
+						    <option th:value="'Tarjeta de Debito'" th:text="Tarjeta_de_Debito"></option>
+						    <option th:value="'Efectivo'" th:text="Efectivo"></option>
+						</select>
+						</div>
+						
+						<div align="center">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+				</form>
+			</div>
+		</div>	
+</html>

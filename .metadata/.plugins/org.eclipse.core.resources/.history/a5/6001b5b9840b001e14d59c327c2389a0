@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<head th:replace="plantillas/base :: head">
+<title>Crear nueva categoria</title>
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark flex-row">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li><a class="nav-link text-white" id="nav-brand-custom" th:href="@{/bienvenida}" style="font-size: 30px">CERTUS</a></li>
+				<li><a class="nav-link text-white" id="nav-brand-custom" th:href="@{/carrito/listarTodo}" style="font-size: 30px">Regresar al Carrito</a></li>
+			</ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Editar Carrito </h1>
+				<div class = "card-body">
+					<form th:action="@{/carrito/guardar}" th:object="${carrito}" method="post">
+						<div class="form-group row">
+							<label>ID Categoria:</label>
+							<input type="text" class="form-control" id="id" th:field="*{idcategoria}" readonly="readonly" />
+						</div>
+						<div class="form-group row">
+							<label>Nombre:</label>
+							<input type="text" class="form-control" id="nombre" th:field="*{nombre}"/>
+						</div>
+						<div class="form-group row">
+							<label>Descripciona:</label>
+							<input type="text" class="form-control" id="descripcion" th:field="*{descripcion}"/>
+						</div>
+						<div align="center">
+							<button type="submit" class="btn btn-primary">Guardar</button>
+						</div>
+				</form>
+			</div>
+		</div>	
+</html>
